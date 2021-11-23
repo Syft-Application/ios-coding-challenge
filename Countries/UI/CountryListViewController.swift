@@ -29,16 +29,16 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
         super.viewDidAppear(animated)
         
         HUD.show(in: view.window!)
-        Server.shared.countryList() { (error) in
-            
-            HUD.dismiss(from: self.view.window!)
-            guard error == nil else {
-                assertionFailure("There was an error: \(error!)")
-                return
-            }
-            
+        
+        let countryManager = CountryManager(networkHandler: NetworkHandler())
+        countryManager.getAllCountries { countries in
+            print(countries)
             self.countryTableView.reloadData()
+        } failure: { error in
+            print(error)
+            assertionFailure("There was an error: \(error!)")
         }
+
     }
     
     

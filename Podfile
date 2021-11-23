@@ -12,9 +12,7 @@ def pod_list
     use_frameworks!
 
     # Pods for Countries
-    pod "Alamofire", "= 5.0.0-rc.2"
-    pod "AlamofireObjectMapper"
-    pod "INSPersistentContainer"
+    pod "Alamofire"
     pod "MBProgressHUD"
  
 end
