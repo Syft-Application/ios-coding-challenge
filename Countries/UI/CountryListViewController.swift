@@ -8,12 +8,16 @@
 
 import UIKit
 import CoreData
+import Combine
 
 
-class CountryListViewController: UIViewController, UITableViewDataSource {
+class CountryListViewController: UIViewController {
 
     @IBOutlet weak var countryTableView: UITableView!
-    var countries: [Country]?
+    lazy var viewModel = CountryListViewModel()
+    var subscriptions = Set<AnyCancellable>()
+    private lazy var dataSource = makeDataSource()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,50 +25,82 @@ class CountryListViewController: UIViewController, UITableViewDataSource {
 
         countryTableView.rowHeight = UITableView.automaticDimension
         countryTableView.estimatedRowHeight = 100
-        countryTableView.dataSource = self
         countryTableView.accessibilityIdentifier = "CountryTable"
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        HUD.show(in: view.window!)
-        
-        let countryManager = CountryManager(networkHandler: NetworkHandler())
-        countryManager.getAllCountries { countries in
-            print(countries)
-            self.countryTableView.reloadData()
-        } failure: { error in
-            print(error)
-            assertionFailure("There was an error: \(error!)")
+        guard let window = view.window else {
+            return
         }
-
-    }
-    
-    
-    // MARK:- UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countries?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell") as! CountryTableViewCell
-        
-        if let country = countries?[indexPath.row] {
-            cell.country.text = country.name
-            cell.capital.text = country.capital
-            cell.population.text = String(country.population)
+        viewModel.$countries.sink { [weak self] countries in
             
-            cell.accessibilityIdentifier = "\(country.name!)-Cell"
-            cell.country.accessibilityIdentifier = "Country"
-            cell.capital.accessibilityIdentifier = "\(country.name!)-Capital"
-            cell.capitalLabel.accessibilityIdentifier = "\(country.name!)-Capital-Label"
-            cell.population.accessibilityIdentifier = "\(country.name!)-Population"
-            cell.populationLabel.accessibilityIdentifier = "\(country.name!)-Population-Label"
-
+            guard let window = self?.view.window else {
+                return
+            }
+        
+            HUD.dismiss(from: window)
+            if let countries = countries {
+                self?.update(with: countries)
+            }
         }
-        return cell
+        .store(in: &subscriptions)
+        
+        HUD.show(in: window)
+        viewModel.fetchCountryData()
+    }
+    
+}
+
+
+// MARK: - Table data source
+extension CountryListViewController {
+    
+    enum Section: CaseIterable {
+        case countries
+    }
+    
+    private func makeDataSource() -> UITableViewDiffableDataSource<Section, Country> {
+        
+        return UITableViewDiffableDataSource(
+            tableView: countryTableView,
+            cellProvider: {  tableView, indexPath, country in
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell") as! CountryTableViewCell
+                
+                cell.country.text = country.name.common
+                
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .decimal
+                let population = formatter.string(from: NSNumber(value: country.population))
+                cell.population.text = population
+                
+                if let capital = country.capital?.first {
+                    cell.capital.text = capital
+                } else {
+                    cell.capital.isHidden = true
+                    cell.capitalLabel.isHidden = true
+                }
+                
+                cell.accessibilityIdentifier = "\(country.name.common)-Cell"
+                cell.country.accessibilityIdentifier = "Country"
+                cell.capital.accessibilityIdentifier = "\(country.name.common)-Capital"
+                cell.capitalLabel.accessibilityIdentifier = "\(country.name.common)-Capital-Label"
+                cell.population.accessibilityIdentifier = "\(country.name.common)-Population"
+                cell.populationLabel.accessibilityIdentifier = "\(country.name.common)-Population-Label"
+                
+                return cell
+            })
+    }
+    
+    
+    func update(with options: [Country], animate: Bool = true) {
+            var snapshot = NSDiffableDataSourceSnapshot<Section, Country>()
+            snapshot.appendSections(Section.allCases)
+            snapshot.appendItems(options, toSection: .countries)
+            self.dataSource.apply(snapshot, animatingDifferences: animate)
     }
     
 }

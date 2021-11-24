@@ -10,5 +10,5 @@ import Foundation
 
 /// Manages the creation of endpoint strings
 enum APIEndpoint: String {
-    case allCountries = "/all"
+    case allCountries = "/v3.1/all"
 }

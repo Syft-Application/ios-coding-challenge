@@ -11,12 +11,6 @@ import Foundation
 import CoreData
 
 
-// Create an account at https://rapidapi.com/developer/dashboard and add a new app to get an API key.
-// https://docs.rapidapi.com/docs/keys
-
-let kRapidAPIKey = "SIGN-UP-FOR-KEY"
-
-
 public typealias JSON = [String : Any]
 
 public extension Notification.Name {
@@ -51,7 +45,7 @@ class Server {
     }
     
     private convenience init() {
-        self.init(host: "restcountries-v1.p.rapidapi.com", path: "/")
+        self.init(host: "restcountries.com", path: "/")
     }
 
     
@@ -71,10 +65,7 @@ class Server {
     /// - returns: list of headers
     public func headers( extraHeaders: HTTPHeaders? = nil ) -> HTTPHeaders {
         
-        var headers: HTTPHeaders = [
-            "X-RapidAPI-Host": "restcountries-v1.p.rapidapi.com",
-            "X-RapidAPI-Key": kRapidAPIKey
-        ]
+        var headers = HTTPHeaders()
         
         if let extraHeaders = extraHeaders {
             extraHeaders.forEach {headers.add($0)}
@@ -151,10 +142,6 @@ extension Server {
         
         // if we have data try to deserialize it
         if let data = data, !data.isEmpty {
-            
-            #if DEBUG
-            print("### JSON response size: \(data.count)")
-            #endif
             
             do {
                 jsonResponse = try JSONSerialization.jsonObject(with: data, options: .allowFragments)

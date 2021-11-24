@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A02528C274EA05200593862 /* MockCountries.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A02528B274EA05100593862 /* MockCountries.json */; };
+		1A1E2C2B274D4FC400589CE7 /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E2C2A274D4FC400589CE7 /* CountryListViewModel.swift */; };
 		1A5628A5241114F400E004AF /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5628A4241114F400E004AF /* CountryTableViewCell.swift */; };
 		1A5628A6241160BE00E004AF /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA0341240EB8320073441E /* DictionaryExtension.swift */; };
 		1A5628A82411615F00E004AF /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5628A72411615F00E004AF /* HUD.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A02528B274EA05100593862 /* MockCountries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockCountries.json; sourceTree = "<group>"; };
+		1A1E2C2A274D4FC400589CE7 /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
 		1A5628A4241114F400E004AF /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		1A5628A72411615F00E004AF /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		1A8660CC240FCF1700F0A5FE /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -101,6 +105,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A02528D274EA0C900593862 /* Test Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A02528B274EA05100593862 /* MockCountries.json */,
+			);
+			path = "Test Resources";
+			sourceTree = "<group>";
+		};
+		1A1E2C29274D4F9200589CE7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1A1E2C2A274D4FC400589CE7 /* CountryListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		1AC71A80241BBA6300BA965E /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,12 +134,12 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		1AC71A81241BBA8600BA965E /* Model */ = {
+		1AC71A81241BBA8600BA965E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				1A8660CC240FCF1700F0A5FE /* Country.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		1AC71A82241BBAAA00BA965E /* Network */ = {
@@ -146,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				1AF93B02240EB2F400355AE7 /* Countries */,
+				1A02528D274EA0C900593862 /* Test Resources */,
 				1AF93B1E240EB2F600355AE7 /* CountriesTests */,
 				1AF93B29240EB2F600355AE7 /* CountriesUITests */,
 				1AF93B01240EB2F400355AE7 /* Products */,
@@ -173,7 +194,8 @@
 				1AF93B16240EB2F500355AE7 /* Info.plist */,
 				1AC71A83241BBAEC00BA965E /* Utilities */,
 				1AC71A82241BBAAA00BA965E /* Network */,
-				1AC71A81241BBA8600BA965E /* Model */,
+				1AC71A81241BBA8600BA965E /* Models */,
+				1A1E2C29274D4F9200589CE7 /* ViewModels */,
 				1AC71A80241BBA6300BA965E /* UI */,
 			);
 			path = Countries;
@@ -320,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A02528C274EA05200593862 /* MockCountries.json in Resources */,
 				1AF93B15240EB2F500355AE7 /* LaunchScreen.storyboard in Resources */,
 				1AF93B12240EB2F500355AE7 /* Assets.xcassets in Resources */,
 				1AF93B0D240EB2F400355AE7 /* Main.storyboard in Resources */,
@@ -402,6 +425,7 @@
 				1AAA033C240EB3A00073441E /* Server.swift in Sources */,
 				1ADEC356274D11EC00F82126 /* CountryManager.swift in Sources */,
 				1AF93B06240EB2F400355AE7 /* SceneDelegate.swift in Sources */,
+				1A1E2C2B274D4FC400589CE7 /* CountryListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

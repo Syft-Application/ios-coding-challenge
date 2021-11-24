@@ -11,6 +11,7 @@ import XCTest
 class CountriesUITests: XCTestCase {
 
     let kTimeOut = 10.0
+    let app = XCUIApplication()
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,6 +20,9 @@ class CountriesUITests: XCTestCase {
         continueAfterFailure = false
         sleep(1)
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
+        XCUIApplication().launchArguments += ["-AppleLocale", "en_GB"]
+        app.launch()
     }
 
     override func tearDown() {
@@ -26,9 +30,6 @@ class CountriesUITests: XCTestCase {
     }
 
     func testPopulationFormat() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
         
         // The purpose of this test is to check that the population is formatted with comma separators.
         // It assumes a UK locale, and:
@@ -53,9 +54,6 @@ class CountriesUITests: XCTestCase {
     }
 
     func testCapitals() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
         
         // The purpose of this test is to check cpital cities are correct,
         // and that we don't try and display non-existent capitals, such as for Antarctica.
@@ -73,29 +71,23 @@ class CountriesUITests: XCTestCase {
     }
     
     func testOrder() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-        
+
         // The purpose of this test is to check the countries are displayed in alphabetical order.
-        // Pick ten countries at random in ascending order of table index and confirm that the countries
-        // are in ascending order too.
+        // The test checks that the first two and last two are as expected.
+        // A UK locale is assumed.
+        let testCountries = ["Afghanistan", "Åland Islands", "Zambia", "Zimbabwe"]
+        
         let table = app.tables["CountryTable"]
         XCTAssertTrue(table.waitForExistence(timeout: kTimeOut))
         let cells = table.cells.allElementsBoundByIndex
         
-        var indexes = Set<UInt32>()
-        while indexes.count < 10 {
-            indexes.insert(arc4random_uniform(UInt32(cells.count)))
-        }
+        var countries = [String]()
+        countries.append(cells[0].staticTexts["Country"].label)
+        countries.append(cells[1].staticTexts["Country"].label)
+        countries.append(cells[cells.count - 2].staticTexts["Country"].label)
+        countries.append(cells[cells.count - 1].staticTexts["Country"].label)
         
-        let orderedIndexes = Array(indexes).sorted()
-        let countries = orderedIndexes.map { (index) -> String in
-            return cells[Int(index)].staticTexts["Country"].label
-        }
-        
-        let orderedCountries = countries.sorted()
-        XCTAssertEqual(countries, orderedCountries)
+        XCTAssertEqual(countries, testCountries)
     }
     
 }
