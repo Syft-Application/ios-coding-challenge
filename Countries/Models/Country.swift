@@ -12,7 +12,7 @@ import CoreData
 
 struct Country: Codable, Hashable {
     
-    var capital: [String]?
+    var capital: [String]
     var name: CountryName
     var population: Int
 }

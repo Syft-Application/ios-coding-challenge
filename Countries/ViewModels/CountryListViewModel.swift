@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import Combine
 
 
 class CountryListViewModel: ObservableObject {
         
     let countryManager: CountryManagerProtocol
-    @Published var countries: [Country]?
+    var countries: [Country]?
 
     
     required init(withCountryManager countryManager: CountryManagerProtocol) {

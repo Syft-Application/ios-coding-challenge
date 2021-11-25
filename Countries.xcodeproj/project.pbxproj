@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		1A02528C274EA05200593862 /* MockCountries.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A02528B274EA05100593862 /* MockCountries.json */; };
 		1A1E2C2B274D4FC400589CE7 /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E2C2A274D4FC400589CE7 /* CountryListViewModel.swift */; };
+		1A428A49274FC161001DA098 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA0341240EB8320073441E /* DictionaryExtension.swift */; };
 		1A5628A5241114F400E004AF /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5628A4241114F400E004AF /* CountryTableViewCell.swift */; };
-		1A5628A6241160BE00E004AF /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA0341240EB8320073441E /* DictionaryExtension.swift */; };
 		1A5628A82411615F00E004AF /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5628A72411615F00E004AF /* HUD.swift */; };
 		1A8660CD240FCF1700F0A5FE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8660CC240FCF1700F0A5FE /* Country.swift */; };
 		1AAA033C240EB3A00073441E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA033B240EB3A00073441E /* Server.swift */; };
@@ -415,9 +415,9 @@
 				1AF93B0A240EB2F400355AE7 /* SecondViewController.swift in Sources */,
 				1AF93B08240EB2F400355AE7 /* CountryListViewController.swift in Sources */,
 				1ADEC354274D118100F82126 /* APIEndpoint.swift in Sources */,
-				1A5628A6241160BE00E004AF /* DictionaryExtension.swift in Sources */,
 				1A5628A82411615F00E004AF /* HUD.swift in Sources */,
 				1A8660CD240FCF1700F0A5FE /* Country.swift in Sources */,
+				1A428A49274FC161001DA098 /* DictionaryExtension.swift in Sources */,
 				1ADEC358274D129700F82126 /* NetworkHandler.swift in Sources */,
 				1AF93B04240EB2F400355AE7 /* AppDelegate.swift in Sources */,
 				1AAA0340240EB7A50073441E /* ServerError.swift in Sources */,

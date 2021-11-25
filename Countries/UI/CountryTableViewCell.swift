@@ -9,7 +9,7 @@
 import UIKit
 
 class CountryTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var country: UILabel!
     @IBOutlet weak var capital: UILabel!
     @IBOutlet weak var capitalLabel: UILabel!
@@ -17,8 +17,19 @@ class CountryTableViewCell: UITableViewCell {
     @IBOutlet weak var population: UILabel!
     @IBOutlet weak var populationLabel: UILabel!
     
-    func configure(withCountry country: Country) {
+    func configure(withCountry countryData: Country) {
+        
+        country.text = countryData.name.common
+        population.text = String(countryData.population)
+        capital.text = countryData.capital.first
+        
+        accessibilityIdentifier = "\(countryData.name.common)-Cell"
+        country.accessibilityIdentifier = "Country"
+        capital.accessibilityIdentifier = "\(countryData.name.common)-Capital"
+        capitalLabel.accessibilityIdentifier = "\(countryData.name.common)-Capital-Label"
+        population.accessibilityIdentifier = "\(countryData.name.common)-Population"
+        populationLabel.accessibilityIdentifier = "\(countryData.name.common)-Population-Label"
         
     }
-
+    
 }
