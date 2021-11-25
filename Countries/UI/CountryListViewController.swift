@@ -68,29 +68,9 @@ extension CountryListViewController {
         return UITableViewDiffableDataSource(
             tableView: countryTableView,
             cellProvider: {  tableView, indexPath, country in
+                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell") as! CountryTableViewCell
-                
-                cell.country.text = country.name.common
-                
-                let formatter = NumberFormatter()
-                formatter.numberStyle = .decimal
-                let population = formatter.string(from: NSNumber(value: country.population))
-                cell.population.text = population
-                
-                if let capital = country.capital?.first {
-                    cell.capital.text = capital
-                } else {
-                    cell.capital.isHidden = true
-                    cell.capitalLabel.isHidden = true
-                }
-                
-                cell.accessibilityIdentifier = "\(country.name.common)-Cell"
-                cell.country.accessibilityIdentifier = "Country"
-                cell.capital.accessibilityIdentifier = "\(country.name.common)-Capital"
-                cell.capitalLabel.accessibilityIdentifier = "\(country.name.common)-Capital-Label"
-                cell.population.accessibilityIdentifier = "\(country.name.common)-Population"
-                cell.populationLabel.accessibilityIdentifier = "\(country.name.common)-Population-Label"
-                
+                cell.configure(withCountry: country)
                 return cell
             })
     }

@@ -17,15 +17,28 @@ class CountryTableViewCell: UITableViewCell {
     @IBOutlet weak var population: UILabel!
     @IBOutlet weak var populationLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(withCountry countryData: Country) {
+        
+        country.text = countryData.name.common
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let formattedPopulation = formatter.string(from: NSNumber(value: countryData.population))
+        population.text = formattedPopulation
+        
+        if let capital = countryData.capital?.first {
+            self.capital.text = capital
+        } else {
+            capital.isHidden = true
+            capitalLabel.isHidden = true
+        }
+        
+        accessibilityIdentifier = "\(countryData.name.common)-Cell"
+        country.accessibilityIdentifier = "Country"
+        capital.accessibilityIdentifier = "\(countryData.name.common)-Capital"
+        capitalLabel.accessibilityIdentifier = "\(countryData.name.common)-Capital-Label"
+        population.accessibilityIdentifier = "\(countryData.name.common)-Population"
+        populationLabel.accessibilityIdentifier = "\(countryData.name.common)-Population-Label"
     }
 
 }
