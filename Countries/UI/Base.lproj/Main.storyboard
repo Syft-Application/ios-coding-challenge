@@ -29,13 +29,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmK-Ar-xYF" userLabel="Country">
-                                                    <rect key="frame" x="20" y="10" width="374" height="68"/>
+                                                    <rect key="frame" x="20" y="10" width="374" height="7"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zll-MH-6RB" userLabel="Info Stack View">
-                                                    <rect key="frame" x="20" y="88" width="364" height="51.5"/>
+                                                    <rect key="frame" x="20" y="27" width="364" height="112.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dgi-3V-RWy" userLabel="Capital Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="344" height="21"/>
@@ -75,11 +75,47 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WiR-Hj-ggk" userLabel="Region Stack View">
+                                                            <rect key="frame" x="0.0" y="61.5" width="142.5" height="20.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Region" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62U-tj-FAu" userLabel="RegionLabel">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="81" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjo-wY-q8A" userLabel="Region">
+                                                                    <rect key="frame" x="101" y="0.0" width="41.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wip-OM-r08" userLabel="Area Stack View">
+                                                            <rect key="frame" x="0.0" y="92" width="142.5" height="20.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Area" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wd5-zk-Fip" userLabel="AreaLabel">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="81" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qi0-wj-atw" userLabel="Area">
+                                                                    <rect key="frame" x="101" y="0.0" width="41.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="dgi-3V-RWy" secondAttribute="trailing" constant="20" symbolic="YES" id="6IL-lJ-gWu"/>
                                                         <constraint firstAttribute="trailing" secondItem="P9i-2N-GmN" secondAttribute="trailing" id="N2d-Oe-sBZ"/>
                                                         <constraint firstItem="dMz-B9-EmC" firstAttribute="width" secondItem="MR6-JW-nX0" secondAttribute="width" id="NEl-6S-RgP"/>
+                                                        <constraint firstItem="62U-tj-FAu" firstAttribute="width" secondItem="MR6-JW-nX0" secondAttribute="width" id="ZCI-1o-eng"/>
+                                                        <constraint firstItem="wd5-zk-Fip" firstAttribute="width" secondItem="MR6-JW-nX0" secondAttribute="width" id="a9N-nS-ncH"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -94,12 +130,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="area" destination="Qi0-wj-atw" id="sMl-jO-zjR"/>
                                             <outlet property="capital" destination="9TE-vu-mNT" id="Nsh-j3-xbq"/>
                                             <outlet property="capitalLabel" destination="MR6-JW-nX0" id="3Bl-Qe-i4R"/>
                                             <outlet property="capitalStackView" destination="dgi-3V-RWy" id="NwO-wT-13a"/>
                                             <outlet property="country" destination="AmK-Ar-xYF" id="v7X-42-YFz"/>
                                             <outlet property="population" destination="BCu-FQ-3W4" id="yQs-UX-Kd7"/>
                                             <outlet property="populationLabel" destination="dMz-B9-EmC" id="yOT-Ml-dGX"/>
+                                            <outlet property="region" destination="kjo-wY-q8A" id="wUT-nx-Ckp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

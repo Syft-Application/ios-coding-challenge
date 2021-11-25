@@ -9,6 +9,9 @@ Once it builds run the UI and unit tests, and note that there are failures. Your
 
 The app displays a list of countries along with their capital and population. Add fields 'Region' and 'Area' to the UI and populate them with data from the API end point using 'region' and 'area' from the server response.
 
+The completed app should look like this screenshot.
+
+![Working screenshot](screen.png)
 
 ## What we are looking for
 Please don't spend more than 3 hours on the test, we understand that your time is important.

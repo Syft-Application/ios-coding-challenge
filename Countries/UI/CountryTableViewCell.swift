@@ -16,6 +16,9 @@ class CountryTableViewCell: UITableViewCell {
     @IBOutlet weak var capitalStackView: UIStackView!
     @IBOutlet weak var population: UILabel!
     @IBOutlet weak var populationLabel: UILabel!
+    @IBOutlet weak var region: UILabel!
+    @IBOutlet weak var area: UILabel!
+    
     
     func configure(withCountry countryData: Country) {
         
@@ -32,6 +35,9 @@ class CountryTableViewCell: UITableViewCell {
             capital.isHidden = true
             capitalLabel.isHidden = true
         }
+        
+        region.text = countryData.region
+        area.text = formatter.string(from: NSNumber(value: countryData.area))
         
         accessibilityIdentifier = "\(countryData.name.common)-Cell"
         country.accessibilityIdentifier = "Country"

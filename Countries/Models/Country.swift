@@ -15,6 +15,8 @@ struct Country: Codable, Hashable {
     var capital: [String]?
     var name: CountryName
     var population: Int
+    var region: String
+    var area: Double
 }
 
 
