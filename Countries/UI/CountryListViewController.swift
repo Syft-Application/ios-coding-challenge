@@ -71,18 +71,8 @@ extension CountryListViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell") as! CountryTableViewCell
                 
                 cell.country.text = country.name.common
-                
-                let formatter = NumberFormatter()
-                formatter.numberStyle = .decimal
-                let population = formatter.string(from: NSNumber(value: country.population))
-                cell.population.text = population
-                
-                if let capital = country.capital?.first {
-                    cell.capital.text = capital
-                } else {
-                    cell.capital.isHidden = true
-                    cell.capitalLabel.isHidden = true
-                }
+                cell.population.text = String(country.population)
+                cell.capital.text = country.capital?.first
                 
                 cell.accessibilityIdentifier = "\(country.name.common)-Cell"
                 cell.country.accessibilityIdentifier = "Country"

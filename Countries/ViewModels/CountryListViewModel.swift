@@ -23,7 +23,7 @@ class CountryListViewModel: ObservableObject {
     
     func fetchCountryData() {
         countryManager.getAllCountries { countries in
-            self.countries = countries.sorted(by: {$0.name.common.localizedCompare($1.name.common) == .orderedAscending})
+            self.countries = countries
         } failure: { error in
             assertionFailure("There was an error: \(error!)")
         }
