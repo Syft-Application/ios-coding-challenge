@@ -14,7 +14,7 @@ import Combine
 class CountryListViewController: UIViewController {
 
     @IBOutlet weak var countryTableView: UITableView!
-    lazy var viewModel = CountryListViewModel()
+    lazy var viewModel = CountryListViewModel(withCountryManager: CountryManager())
     var subscriptions = Set<AnyCancellable>()
     private lazy var dataSource = makeDataSource()
 

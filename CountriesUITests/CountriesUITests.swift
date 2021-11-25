@@ -18,7 +18,7 @@ class CountriesUITests: XCTestCase {
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        sleep(1)
+
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
         
         XCUIApplication().launchArguments += ["-AppleLocale", "en_GB"]
@@ -68,26 +68,6 @@ class CountriesUITests: XCTestCase {
 
         let antarcticaCapital = app.staticTexts["Antarctica-Capital-Label"]
         XCTAssertFalse(antarcticaCapital.waitForExistence(timeout: kTimeOut))
-    }
-    
-    func testOrder() {
-
-        // The purpose of this test is to check the countries are displayed in alphabetical order.
-        // The test checks that the first two and last two are as expected.
-        // A UK locale is assumed.
-        let testCountries = ["Afghanistan", "Åland Islands", "Zambia", "Zimbabwe"]
-        
-        let table = app.tables["CountryTable"]
-        XCTAssertTrue(table.waitForExistence(timeout: kTimeOut))
-        let cells = table.cells.allElementsBoundByIndex
-        
-        var countries = [String]()
-        countries.append(cells[0].staticTexts["Country"].label)
-        countries.append(cells[1].staticTexts["Country"].label)
-        countries.append(cells[cells.count - 2].staticTexts["Country"].label)
-        countries.append(cells[cells.count - 1].staticTexts["Country"].label)
-        
-        XCTAssertEqual(countries, testCountries)
     }
     
 }

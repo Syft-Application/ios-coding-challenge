@@ -10,16 +10,18 @@ import Foundation
 import Combine
 
 
-protocol CountryListViewModelProtocol {
-    func fetchCountryData(usingCountryManager countryManager: CountryManager)
-}
-
-
-class CountryListViewModel: ObservableObject, CountryListViewModelProtocol {
-    
+class CountryListViewModel: ObservableObject {
+        
+    let countryManager: CountryManagerProtocol
     @Published var countries: [Country]?
 
-    func fetchCountryData(usingCountryManager countryManager: CountryManager = CountryManager(networkHandler: NetworkHandler())) {
+    
+    required init(withCountryManager countryManager: CountryManagerProtocol) {
+        self.countryManager = countryManager
+    }
+    
+    
+    func fetchCountryData() {
         countryManager.getAllCountries { countries in
             self.countries = countries.sorted(by: {$0.name.common.localizedCompare($1.name.common) == .orderedAscending})
         } failure: { error in

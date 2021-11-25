@@ -12,16 +12,6 @@ import CoreData
 
 struct Country: Codable, Hashable {
     
-//    static func == (lhs: Country, rhs: Country) -> Bool {
-//        return lhs.capital == rhs.capital
-//        && lhs.name.common == lhs.name.common
-//        && lhs.population == rhs.population
-//    }
-//
-//    func hash(into hasher: inout Hasher) {
-//        <#code#>
-//    }
-    
     var capital: [String]?
     var name: CountryName
     var population: Int
