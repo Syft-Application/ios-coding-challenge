@@ -12,8 +12,8 @@ def pod_list
     use_frameworks!
 
     # Pods for Countries
-    pod "Alamofire"
-    pod "MBProgressHUD"
+    pod "Alamofire", "~> 5.5.0" 
+    pod "MBProgressHUD", "~> 1.2.0"
  
 end
 
